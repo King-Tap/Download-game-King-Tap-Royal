@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Tap Royal</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  max-width: 520px;
+  margin: auto;
+  padding: 25px;
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+p {
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+.download-btn {
+  display: block;
+  margin: 20px auto 10px;
+  padding: 15px;
+  width: 90%;
+  max-width: 320px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  text-decoration: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.download-btn:active {
+  transform: scale(0.97);
+}
+
+.secondary-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 12px;
+  width: 85%;
+  max-width: 300px;
+  background: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.stats {
+  margin-top: 15px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 5px 12px;
+  background: #3b82f6;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.section {
+  text-align: right;
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="badge">👑 King Tap Royal</div>
+
+    <h1>🔥 لعبة النقر الأسطورية</h1>
+
+    <p>
+      4 ألعاب داخل لعبة واحدة 👀<br>
+      تجربة تجمع بين التحدي، الذكاء، والأسرار الغامضة!
+    </p>
+
+    <div class="section">
+      <b>✨ ما الذي ينتظرك داخل هذه اللعبة؟</b><br><br>
+
+      💰 <b>كسب المال:</b> أنقر واجمع الذهب لترقية قوة نقرتك وتطوير نفسك وشراء المساعدات.<br><br>
+
+      🧠 <b>تحدي العباقرة:</b> أسئلة ذكاء يومية وجوائز XP لمن يحلها داخل اللعبة.<br><br>
+
+      🌑 <b>أسرار المحادثة المظلمة:</b> تسريبات وتلميحات حول الشخصية المجهولة التي تظهر عندما تنفد البطارية.
+    </div>
+
+    <a class="download-btn" href="King-Tap-Royal.apk" download onclick="addDownload()">
+      📥 تحميل اللعبة APK
+    </a>
+
+    <a class="secondary-btn" href="https://king-tap-royal-lnc.itch.io/king-tap-royal" target="_blank">
+      🌐 صفحة اللعبة على itch.io
+    </a>
+
+    <div class="stats">
+      🔽 عدد التحميلات: <span id="downloads">0</span>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+// 🔥 عدّاد تحميل (تقريبي عالمي)
+let counter = document.getElementById("downloads");
+
+fetch("https://api.countapi.xyz/hit/kingtaproyal/downloads")
+.then(res => res.json())
+.then(data => {
+  counter.innerText = data.value;
+})
+.catch(() => {
+  let local = localStorage.getItem("downloads") || 0;
+  counter.innerText = local;
+});
+
+// 🔥 زيادة عند الضغط
+function addDownload() {
+  let local = localStorage.getItem("downloads") || 0;
+  local++;
+  localStorage.setItem("downloads", local);
+}
+</script>
+
+</body>
+</html>
